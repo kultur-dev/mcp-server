@@ -1,0 +1,39 @@
+{
+  "name": "Kultur.dev Cultural Analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://kultur.dev/api/v1/analyze/text",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.text }}"
+            },
+            {
+              "name": "target_country",
+              "value": "={{ $json.country }}"
+            }
+          ]
+        }
+      },
+      "name": "Kultur.dev Analysis",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300]
+    }
+  ],
+  "connections": {}
+}

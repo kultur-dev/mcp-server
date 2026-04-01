@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "kultur-dev": {
+      "url": "https://kultur.dev/api/mcp-sse/sse",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
