@@ -37,12 +37,12 @@ Scans text for potential cultural sensitivity issues, returning severity scores 
 
 ### get_localization_guidance
 
-Provides localization recommendations for adapting content to a target market across 9 tones: formal, casual, marketing, legal, medical, technical, academic, diplomatic, and humorous.
+Provides localization recommendations for adapting content to a target market across 15 tones: formal, humble, celebratory, respectful, casual, neutral, professional, friendly, humorous, marketing, legal, medical, technical, academic, and diplomatic.
 
 **Parameters:**
 - `text` (string, required): The text to localize
 - `target_country` (string, required): ISO country code
-- `tone` (string, optional): One of: formal, casual, marketing, legal, medical, technical, academic, diplomatic, humorous
+- `tone` (string, optional): One of: formal, humble, celebratory, respectful, casual, neutral, professional, friendly, humorous, marketing, legal, medical, technical, academic, diplomatic
 
 ### compare_cultures
 
