@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "kultur-dev": {
+      "url": "https://kultur.dev/api/mcp-sse/sse",
+      "transport": "sse",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      },
+      "description": "Kultur.dev — Cultural Intelligence Infrastructure for AI Agents. Provides cultural analysis, sensitivity checking, localization guidance, Hofstede dimensions, and geopolitical risk analysis across 195+ countries.",
+      "tools": [
+        "analyze_cultural_context",
+        "check_cultural_sensitivity",
+        "get_localization_guidance",
+        "compare_cultures",
+        "get_communication_style",
+        "get_holiday_calendar",
+        "analyze_hofstede",
+        "compare_hofstede",
+        "get_geopolitical_heatmap"
+      ]
+    }
+  }
+}
