@@ -1,15 +1,20 @@
 name: kultur-dev
-description: Cultural Intelligence Infrastructure for AI Agents — cultural analysis, sensitivity checking, localization, Hofstede dimensions, and geopolitical risk via MCP.
-version: 1.0.0
+description: >-
+  The multimodal cultural intelligence layer every AI agent needs. Analyze text, images, and video
+  for cultural risks, sensitivity, and localization across 200+ markets. 9 MCP tools + image/video
+  analysis + branded PDF report generation. 15 tone styles, Hofstede dimensions, geopolitical risk
+  scoring. The cost of a cultural mistake is millions. The cost of preventing one is an API call.
+version: 1.0.2
 author: Global InTech AI
 homepage: https://kultur.dev
 repository: https://github.com/kultur-dev/mcp-server
-license: Proprietary
+license: MIT
 categories:
   - data
   - analysis
   - enterprise
   - localization
+  - multimodal
 tags:
   - cultural-intelligence
   - localization
@@ -18,6 +23,13 @@ tags:
   - sensitivity-checking
   - mcp
   - ai-agents
+  - multimodal
+  - image-analysis
+  - video-analysis
+  - pdf-reports
+  - global-markets
+  - brand-safety
+  - compliance
 transport:
   type: sse
   url: https://kultur.dev/api/mcp-sse/sse
