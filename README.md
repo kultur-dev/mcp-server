@@ -49,7 +49,7 @@ The platform includes Hofstede cultural dimensions with business implications an
 
 Kultur.dev provides cultural intelligence as an API, enabling AI agents, LLMs, and enterprise software to understand cultural context, avoid sensitivity violations, and communicate effectively across 200+ markets and 50+ languages.
 
-The MCP (Model Context Protocol) server exposes **9 specialized tools** plus **multimodal endpoints** that any MCP-compatible client can use:
+The MCP (Model Context Protocol) server exposes **9 specialized tools** plus **multimodal and streaming endpoints** that any MCP-compatible client can use:
 
 ### MCP Tools
 
@@ -65,10 +65,11 @@ The MCP (Model Context Protocol) server exposes **9 specialized tools** plus **m
 | `compare_hofstede` | Compare Hofstede dimension scores between two countries |
 | `get_geopolitical_heatmap` | Geopolitical risk analysis with adaptive EWA scoring across 12 risk categories |
 
-### Multimodal Endpoints
+### Multimodal & Streaming Endpoints
 
 | Endpoint | Description |
 |----------|-------------|
+| `WSS /api/v1/streaming/analyze` | **Real-time Streaming:** Analyze video frames in real-time via WebSocket connection for live broadcasts and conferencing |
 | `POST /api/v1/analyze/image` | Analyze images for cultural sensitivity including visual taboos, symbols, colors, and gestures |
 | `POST /api/v1/analyze/video` | Analyze video content for cultural compliance across target markets |
 | `POST /api/v1/upload/image` | Upload images for cultural analysis |
@@ -196,9 +197,9 @@ pip install kultur-mcp
 
 ---
 
-## REST API
+## REST & Streaming API
 
-For non-MCP integrations, Kultur.dev provides a comprehensive REST API:
+For non-MCP integrations, Kultur.dev provides a comprehensive REST and WebSocket API:
 
 ### Text Analysis
 
@@ -212,10 +213,11 @@ For non-MCP integrations, Kultur.dev provides a comprehensive REST API:
 | `/api/v1/localization/guidance` | POST | Localization recommendations |
 | `/api/v1/geopolitical/heatmap` | POST | Geopolitical risk scoring |
 
-### Multimodal Analysis
+### Multimodal & Streaming Analysis
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
+| `/api/v1/streaming/analyze` | WSS | **Real-time video frame analysis via WebSocket** |
 | `/api/v1/analyze/image` | POST | Analyze images for cultural sensitivity |
 | `/api/v1/analyze/video` | POST | Analyze video for cultural compliance |
 | `/api/v1/upload/image` | POST | Upload image for analysis |
@@ -227,41 +229,23 @@ For non-MCP integrations, Kultur.dev provides a comprehensive REST API:
 |----------|--------|-------------|
 | `/api/v1/reports/generate` | POST | Generate branded PDF cultural audit reports |
 
-### Example: Analyze Cultural Context
+### Example: Real-time Streaming (WebSocket)
 
-```bash
-curl -X POST https://kultur.dev/api/v1/analyze/text \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Schedule a business meeting in Tokyo",
-    "target_country": "JP",
-    "source_country": "US"
-  }'
-```
+```javascript
+const socket = new WebSocket('wss://kultur.dev/api/v1/streaming/analyze');
 
-### Example: Check Cultural Sensitivity
+socket.onopen = () => {
+  socket.send(JSON.stringify({
+    "auth_token": "YOUR_API_KEY",
+    "target_country": "SA",
+    "frame_data": "base64_encoded_frame"
+  }));
+};
 
-```bash
-curl -X POST https://kultur.dev/api/v1/sensitivity/check \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Let us raise a toast to our partnership",
-    "target_countries": ["SA", "IR"]
-  }'
-```
-
-### Example: Analyze Image for Cultural Sensitivity
-
-```bash
-curl -X POST https://kultur.dev/api/v1/analyze/image \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "image_url": "https://example.com/campaign-image.jpg",
-    "target_countries": ["JP", "SA", "BR"]
-  }'
+socket.onmessage = (event) => {
+  const analysis = JSON.parse(event.data);
+  console.log('Real-time Cultural Risk:', analysis.risk_score);
+};
 ```
 
 ---
@@ -290,11 +274,13 @@ Authorization: Bearer YOUR_API_KEY
 | **Pro** | 10,000/month | All 200+ markets | $49/month |
 | **Enterprise** | Unlimited | All + custom models | Contact us |
 
-Free tier includes full access to all tools including multimodal analysis. Pro and Enterprise tiers provide clean, production-ready responses.
+Free tier includes full access to all tools including multimodal analysis. Pro and Enterprise tiers provide clean, production-ready responses and access to **Real-time Streaming** endpoints.
 
 ---
 
 ## Use Cases
+
+**For Podcasters & Broadcasters:** Real-time cultural monitoring of live video feeds to ensure global brand safety. Instant alerts for visual taboos or sensitive gestures during live streaming.
 
 **For AI Agents & LLMs:** Cultural context injection before generating responses about specific countries. Real-time sensitivity checking on AI-generated content (text, images, and video). Localization guidance for multi-market content generation. Visual content screening before publishing to international audiences.
 
@@ -364,7 +350,7 @@ agent.run("Analyze cultural sensitivity of our ad campaign for Saudi Arabia")
 
 ## Support
 
-**Documentation:** [kultur.dev/docs](https://kultur.dev/docs) | **Email:** contact@globalintech.ai | **Issues:** [GitHub Issues](https://github.com/kultur-dev/mcp-server/issues)
+**Documentation:** [kultur.dev/docs](https://kultur.dev/docs) | **Email:** contact@kultur.dev | **Issues:** [GitHub Issues](https://github.com/kultur-dev/mcp-server/issues)
 
 ## License
 
