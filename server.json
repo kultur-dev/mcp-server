@@ -1,13 +1,13 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.kultur-dev/kultur-dev",
-  "title": "Kultur.dev",
-  "description": "Cultural Intelligence Infrastructure for AI Agents — 200+ markets, 15 tones, 8 tools",
+  "name": "dev.kultur/mcp-server",
+  "title": "Kultur.dev: Multimodal Cultural Intelligence",
+  "description": "The multimodal cultural intelligence layer every AI agent needs. Analyze text, images, and video for cultural risks across 200+ markets. 9 MCP tools + image/video analysis + PDF report generation. 15 localization tones, Hofstede dimensions, geopolitical risk scoring.",
   "repository": {
     "url": "https://github.com/kultur-dev/mcp-server",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.2",
   "remotes": [
     {
       "type": "sse",
@@ -15,7 +15,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer API key for authentication (get one at https://kultur.dev/pricing)",
+          "description": "Bearer API key for authentication (get one free at https://kultur.dev/pricing)",
           "isRequired": true,
           "isSecret": true
         }
