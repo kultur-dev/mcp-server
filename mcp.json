@@ -6,7 +6,7 @@
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       },
-      "description": "Kultur.dev — Cultural Intelligence Infrastructure for AI Agents. Provides cultural analysis, sensitivity checking, localization guidance, Hofstede dimensions, and geopolitical risk analysis across 195+ countries.",
+      "description": "Kultur.dev: The multimodal cultural intelligence layer every AI agent needs. Analyze text, images, and video for cultural risks, sensitivity, and localization across 200+ markets. 9 MCP tools + image/video analysis + branded PDF report generation. 15 tone styles, Hofstede dimensions, geopolitical risk scoring.",
       "tools": [
         "analyze_cultural_context",
         "check_cultural_sensitivity",
